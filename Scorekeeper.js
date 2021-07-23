@@ -22,7 +22,7 @@ bt4.style.borderRadius = '1.5em';
 section.append(bt4)
 
 
-section.addEventListener('click', (evt) => {
+section.addEventListener('click', (evt) => { // and event object is passed by default and to capture it you need a placeholder variable or in this case an event object. 
     evt.target.previousElementSibling.nodeName === 'DIV'  && evt.target.parentElement.remove();
 })
 
@@ -55,7 +55,7 @@ p2 = {
     playerCount: 0,
     button: document.querySelector('#two'),
     display: document.querySelector('#p2display'),
-    text: function () { // binds to the owner of the function which is this function.
+    text: function () { // binds this reference to the owner of the function which is this function.
         this.button.innerHTML = '+ Player Two';
     }
 
