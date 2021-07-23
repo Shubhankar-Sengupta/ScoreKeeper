@@ -23,14 +23,14 @@ section.append(bt4)
 
 
 section.addEventListener('click', (evt) => { // and event object is passed by default and to capture it you need a placeholder variable or in this case an event object. 
-    evt.target.previousElementSibling.nodeName === 'DIV'  && evt.target.parentElement.remove();
+    evt.target.previousElementSibling.nodeName === 'DIV' && evt.target.parentElement.remove();
 })
 
 
 result.append(span);
 
 select.addEventListener('change', function () {
-    
+
     winningpoint = parseInt(this.value);
     reset();
     // here we are resetting the winningpoint because when we update the winning point we want the game to restart with the winning point mentioned.
@@ -85,7 +85,7 @@ function updateScores(player, ...opponent) { // REST params gives us an actual a
 
         player.playerCount += 1;
 
-        if (player.playerCount >= parseInt(select.value)) { 
+        if (player.playerCount > parseInt(select.value)) {
 
             span.innerHTML = `<b style="color:green;">-Advantage ${player.str} </b>`;
 
@@ -98,11 +98,16 @@ function updateScores(player, ...opponent) { // REST params gives us an actual a
                 span.innerHTML = `<b style="color:green;">-Dues  between ${player.str} and ${opponent[0].str} </b>`;
             }
 
-            
+
             else if (player.playerCount === opponent[1].playerCount && player.playerCount !== opponent[0].playerCount) {
                 span.innerHTML = `<b style="color:green;">-Dues  between ${player.str} and ${opponent[1].str} </b>`;
 
-            }     
+            }
+
+            else if (player.playerCount < opponent[1].playerCount && player.playerCount < opponent[0].playerCount && opponent[1].playerCount === opponent[0].playerCount) {
+                span.innerHTML = `<b style="color:green;">-Dues  between ${opponent[0].str} and ${opponent[1].str} </b>`
+
+            }
 
         }
 
