@@ -85,32 +85,6 @@ function updateScores(player, ...opponent) { // REST params gives us an actual a
 
         player.playerCount += 1;
 
-        if (player.playerCount >= parseInt(select.value)) {
-
-            span.innerHTML = `<b style="color:green;">-Advantage ${player.str} </b>`;
-
-            if (player.playerCount === opponent[0].playerCount && player.playerCount === opponent[1].playerCount) {
-                span.innerHTML = `<b style="color:red;"> -Dues  between  ${player.str}, ${opponent[0].str} and ${opponent[1].str} </b>`;
-            }
-
-            else if (player.playerCount === opponent[0].playerCount && player.playerCount !== opponent[1].playerCount) {
-                span.innerHTML = `<b style="color:green;">-Dues  between ${player.str} and ${opponent[0].str} </b>`;
-            }
-
-
-            else if (player.playerCount === opponent[1].playerCount && player.playerCount !== opponent[0].playerCount) {
-                span.innerHTML = `<b style="color:green;">-Dues  between ${player.str} and ${opponent[1].str} </b>`;
-
-            }
-
-            else if (player.playerCount < opponent[1].playerCount || player.playerCount < opponent[0].playerCount && opponent[1].playerCount === opponent[0].playerCount) {
-                span.innerHTML = `<b style="color:green;">-Dues  between ${opponent[0].str} and ${opponent[1].str} </b>`
-
-            }
-
-        }
-
-
         player.display.innerText = player.playerCount;
 
         for (let opp; opp <= opponent.length; opp++) {
